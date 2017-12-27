@@ -1,17 +1,27 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-
 using Foundation;
+using MvvmCross.Core.ViewModels;
+using MvvmCross.Forms.iOS;
+using MvvmCross.Platform;
 using UIKit;
 
-namespace Aphasia.iOS {
+namespace Aphasia.iOS
+{
     [Register("AppDelegate")]
-    public partial class AppDelegate : global::Xamarin.Forms.Platform.iOS.FormsApplicationDelegate {
-        public override bool FinishedLaunching(UIApplication app, NSDictionary options) {
-            global::Xamarin.Forms.Forms.Init();
+    public partial class AppDelegate : MvxFormsApplicationDelegate
+    {
+        public override bool FinishedLaunching(UIApplication app, NSDictionary options)
+        {
+            Window = new UIWindow(UIScreen.MainScreen.Bounds);
 
-            LoadApplication(new App());
+            var setup = new Setup(this, Window);
+            setup.Initialize();
+
+            var startup = Mvx.Resolve<IMvxAppStart>();
+            startup.Start();
+
+            LoadApplication(setup.FormsApplication);
+			
+            Window.MakeKeyAndVisible();
 
             return base.FinishedLaunching(app, options);
         }

@@ -1,23 +1,15 @@
-﻿using Xamarin.Forms;
+﻿using MvvmCross.Core.ViewModels;
+using MvvmCross.Forms.Platform;
+using MvvmCross.Platform;
+using Xamarin.Forms;
 
-namespace Aphasia {
-    public partial class App : Application {
-        public App() {
+namespace Aphasia.Core
+{
+    public partial class App : MvxFormsApplication
+    {
+        public App()
+        {
             InitializeComponent();
-
-            MainPage = new AphasiaPage();
-        }
-
-        protected override void OnStart() {
-            // Handle when your app starts
-        }
-
-        protected override void OnSleep() {
-            // Handle when your app sleeps
-        }
-
-        protected override void OnResume() {
-            // Handle when your app resumes
         }
     }
 }
