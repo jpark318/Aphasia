@@ -5,7 +5,7 @@ using MvvmCross.Droid.Views;
 namespace Aphasia.Droid
 {
     [Activity(
-        Label = "YourAppName"
+        Label = "Aphasia"
         , MainLauncher = true
         , Icon = "@drawable/icon"
         , Theme = "@style/Theme.Splash"
